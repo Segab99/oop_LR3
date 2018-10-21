@@ -31,7 +31,7 @@ namespace oop_LR3
                 kw = i;
                 reader.Close();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageBox.Show("Файл не temp.txt найден!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -44,10 +44,10 @@ namespace oop_LR3
             int i = 0;
             s = s + ".txt";
             nameFile = s;
-            StreamReader reader;
+            
             try
             {
-                reader = new StreamReader(nameFile, Encoding.GetEncoding(1251));
+                StreamReader reader = new StreamReader(nameFile, Encoding.GetEncoding(1251));
                 while (!reader.EndOfStream)
                 {
                     i = i + 1;
@@ -58,8 +58,16 @@ namespace oop_LR3
             }
             catch(FileNotFoundException)
             {
-                MessageBox.Show("Файл не найден!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+                MessageBox.Show("Файл не найден! Будет создан новый файл", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FileStream file1 = new FileStream(nameFile, FileMode.Create);
+                StreamReader reader = new StreamReader(file1, Encoding.GetEncoding(1251));
+                while (!reader.EndOfStream)
+                {
+                    i = i + 1;
+                    MasPerson[i] = new CPerson(reader);
+                }
+                kw = i;
+                reader.Close();
             }
                        
         }
