@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace oop_LR3
+namespace lab2OOP
 {
     public partial class Form1 : Form
     {

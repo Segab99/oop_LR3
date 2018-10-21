@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace oop_LR3
+namespace lab2OOP
 {
     class CPerson
     {
