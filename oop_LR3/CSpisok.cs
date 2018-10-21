@@ -94,20 +94,22 @@ namespace oop_LR3
             CPerson[] nArray = new CPerson[MasPerson.Length - 1];
             
             kw--;
-            for (int i = 1; i < id; i++)
+            for (int i = 1; i < MasPerson.Length; i++)
             {
-                nArray[i] = MasPerson[i];
-            }
-
-            for (int i = id + 1; i < nArray.Length; i++)
-            {
-                nArray[i] = MasPerson[i];
+                if (i < id)
+                {
+                    nArray[i] = MasPerson[i];
+                }
+                else if (i > id)
+                {
+                    nArray[i - 1] = MasPerson[i];
+                }
             }
             for (int i = 1; i <= kw; i++)
             {
                 MasPerson[i] = nArray[i];
             }
-            
+
         }
         ~CSpisok()
         {
