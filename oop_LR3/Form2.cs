@@ -71,8 +71,9 @@ namespace oop_LR3
                 }
                 if (Convert.ToInt32(textBox7.Text) > spisok.Kw_pers)
                 {
-                MessageBox.Show("Нет такого номера!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                    MessageBox.Show("Нет такого номера!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBox7.Text = "";
+                    return;
                 }
                 textBox4.Text = spisok.PersonListP(Convert.ToInt32(textBox7.Text)).Fam;
                 textBox5.Text = spisok.PersonListP(Convert.ToInt32(textBox7.Text)).Name;
@@ -99,24 +100,37 @@ namespace oop_LR3
         {
             spisok.DeletePerson(Convert.ToInt32(textBox8.Text));
             label_kw.Text = Convert.ToString(spisok.Kw_pers);
-            
+            textBox8.Text = "";
             labelFIO.Text = "";
         }
 
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
             if (textBox8.Text == "") labelFIO.Text = "";
-            if ((Convert.ToInt32(textBox8.Text) < Convert.ToInt32("1")) || (Convert.ToInt32(textBox8.Text) > Convert.ToInt32("9")))
+            try
             {
-                textBox7.Text = "";
-                return;
+                if ((Convert.ToInt32(textBox8.Text) < Convert.ToInt32("1")) || (Convert.ToInt32(textBox8.Text) > Convert.ToInt32("9")))
+                    {
+                        return;
+                    }
+                if (Convert.ToInt32(textBox8.Text) > spisok.Kw_pers)
+                            {
+                                    MessageBox.Show("Нет такого номера!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   
+                                    return;
+                            }
+                labelFIO.Text = spisok.PersonListS(Convert.ToInt32(textBox8.Text));
+
             }
-            if (Convert.ToInt32(textBox8.Text) > spisok.Kw_pers)
+            
+            catch(Exception)
             {
-                    MessageBox.Show("Нет такого номера!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                MessageBox.Show("Неверный тип данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
-            labelFIO.Text = spisok.PersonListS(Convert.ToInt32(textBox8.Text));
+            
+            
+            
         }
     }
 }
