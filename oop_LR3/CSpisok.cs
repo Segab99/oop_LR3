@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace lab2OOP
+namespace oop_LR3
 {
     class CSpisok
     {
@@ -19,15 +19,25 @@ namespace lab2OOP
             int i = 0;
             nameFile = "temp.txt";
             
-            StreamReader reader = new StreamReader(nameFile, Encoding.GetEncoding(1251));
-            while (!reader.EndOfStream)
+            try
             {
-                i = i + 1;
-                MasPerson[i] = new CPerson(reader);
+                StreamReader reader = new StreamReader(nameFile, Encoding.GetEncoding(1251));
+                while (!reader.EndOfStream)
+                {
+                    i = i + 1;
+                    MasPerson[i] = new CPerson(reader);
+                }
+            
+                kw = i;
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Файл не temp.txt найден!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
             
-             kw = i;
-             reader.Close();
+            
         }
         public CSpisok(string s)
         {
@@ -74,7 +84,7 @@ namespace lab2OOP
         public void DeletePerson(int id)
         {
             CPerson[] nArray = new CPerson[MasPerson.Length - 1];
-            //var cIndex = 0;
+            
             kw--;
             for (int i = 1; i < id; i++)
             {
