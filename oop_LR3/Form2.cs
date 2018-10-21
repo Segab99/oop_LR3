@@ -44,9 +44,9 @@ namespace oop_LR3
 
         private void button2_Click(object sender, EventArgs e)
         {
-            spisok.GetData(Convert.ToInt32(textBox7.Text)).Fam = textBox4.Text;
-            spisok.GetData(Convert.ToInt32(textBox7.Text)).Name = textBox5.Text;
-            spisok.GetData(Convert.ToInt32(textBox7.Text)).Otch = textBox6.Text;
+            spisok.PersonListP(Convert.ToInt32(textBox7.Text)).Fam = textBox4.Text;
+            spisok.PersonListP(Convert.ToInt32(textBox7.Text)).Name = textBox5.Text;
+            spisok.PersonListP(Convert.ToInt32(textBox7.Text)).Otch = textBox6.Text;
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
@@ -74,9 +74,9 @@ namespace oop_LR3
                 MessageBox.Show("Нет такого номера!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
                 }
-                textBox4.Text = spisok.GetData(Convert.ToInt32(textBox7.Text)).Fam;
-                textBox5.Text = spisok.GetData(Convert.ToInt32(textBox7.Text)).Name;
-                textBox6.Text = spisok.GetData(Convert.ToInt32(textBox7.Text)).Otch;
+                textBox4.Text = spisok.PersonListP(Convert.ToInt32(textBox7.Text)).Fam;
+                textBox5.Text = spisok.PersonListP(Convert.ToInt32(textBox7.Text)).Name;
+                textBox6.Text = spisok.PersonListP(Convert.ToInt32(textBox7.Text)).Otch;
 
             }
             catch (Exception)
@@ -116,7 +116,7 @@ namespace oop_LR3
                     MessageBox.Show("Нет такого номера!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
             }
-            labelFIO.Text = spisok.GetStringData(Convert.ToInt32(textBox8.Text));
+            labelFIO.Text = spisok.PersonListS(Convert.ToInt32(textBox8.Text));
         }
     }
 }

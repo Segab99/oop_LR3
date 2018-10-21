@@ -13,6 +13,14 @@ namespace oop_LR3
         private int kw;
         private CPerson[] MasPerson = new CPerson[100];
         private string nameFile;
+        private string GetStringData(int i)
+        {
+            return MasPerson[i].FullData;
+        }
+        private CPerson GetData(int i)
+        {
+            return MasPerson[i];
+        }
 
         public CSpisok()
         {
@@ -71,15 +79,16 @@ namespace oop_LR3
             }
                        
         }
-
-        public CPerson GetData(int i)
+        public string PersonListS(int i)
         {
-            return MasPerson[i];
+            return GetStringData(i);
         }
-        public string GetStringData(int i)
+        public CPerson PersonListP(int i)
         {
-            return MasPerson[i].FullData;
+            return GetData(i);
         }
+        
+       
         public int Kw_pers
         {
             get => kw ;
@@ -111,6 +120,7 @@ namespace oop_LR3
             }
 
         }
+
         ~CSpisok()
         {
             FileStream file1 = new FileStream(nameFile, FileMode.Create);
